@@ -9,7 +9,7 @@ while True :
         definition = str(input("Enter definition of the word: "))
 
         listOfWords.update({key: definition}) 
-        print("Word added succesfuly ")
+        print("Word added successfuly ")
 
     elif command == 2 :
         key = str(input("What word to serch?: "))
@@ -18,9 +18,13 @@ while True :
     elif command == 3 :
         key = str(input("What word you want to delete?: "))
         del(listOfWords[key])
-        print("Word deleted succesful")
+        print("Word deleted successful")
 
     elif command == 4 :
+        print("You chose option: 'close'")
         break
+    else:
+        print("Wrong command! Try again.")
+
     
     
