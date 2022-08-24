@@ -1,7 +1,7 @@
 import random
+
 while True:
     print("Chose difficulty: level 'easy' 'normal' 'hard'")
-
 
     difficultylevel = str(input("Difficulty lever: "))
     if difficultylevel == "easy":
