@@ -6,19 +6,28 @@ while True :
 
     if command == 1 :
         key = str(input("Enter word: "))
-        definition = str(input("Enter definition of the word: "))
+        if key in listOfWords:
+            print("This word is already in dictionary")
+        else:
+            definition = str(input("Enter definition of the word: "))
 
-        listOfWords.update({key: definition}) 
-        print("Word added successfuly ")
+            listOfWords.update({key: definition}) 
+            print("Word added successfuly ")
 
     elif command == 2 :
         key = str(input("What word to serch?: "))
-        print(listOfWords[key])
+        if key in listOfWords:
+            print(listOfWords[key])
+        else:
+            print("There is not such word in dictionary")
     
     elif command == 3 :
         key = str(input("What word you want to delete?: "))
-        del(listOfWords[key])
-        print("Word deleted successful")
+        if key in listOfWords:
+            del(listOfWords[key])
+            print("Word deleted successful")
+        else:
+            print("There is not such word in dictionary")
 
     elif command == 4 :
         print("You chose option: 'close'")
