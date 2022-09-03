@@ -36,4 +36,3 @@ while True:
         print(pole_trapezu(a, b, h))
     elif wybor == 6:
         break 
-            
