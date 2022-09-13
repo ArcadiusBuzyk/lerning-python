@@ -23,7 +23,7 @@ def evil_function(toBeDestroyedList):
 myList = [[1, 4], [2, 1], [52, 3]]
 
 evil_function(copy.deepcopy(myList))
-"""
+
 def podwoj (x):
     return x * 2
 
@@ -32,3 +32,13 @@ print(podwoj(4))
 myList = [2, 14, 22, 7, 6, 4, 5, 17]
 myListFiltered = list(filter(lambda x: x % 2 == 0, myList))
 print (myListFiltered)
+
+def wiadomosc_powitalna(imie):
+    print("Cześć", imie, "Miło cię poznać")
+
+imiona = ["Arku", "Klaudio", "Werko"]
+for imie in imiona :
+    wiadomosc_powitalna(imie)
+"""
+def pole_prostokata(a, b):
+    print(a * b)
