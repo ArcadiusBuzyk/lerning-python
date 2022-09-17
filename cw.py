@@ -40,5 +40,7 @@ imiona = ["Arku", "Klaudio", "Werko"]
 for imie in imiona :
     wiadomosc_powitalna(imie)
 """
-def pole_prostokata(a, b):
-    print(a * b)
+import random
+lista = [1,2,3,4]
+wybor = random.choice(lista)
+print(wybor)
