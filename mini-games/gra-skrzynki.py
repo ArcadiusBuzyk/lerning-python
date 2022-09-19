@@ -31,10 +31,10 @@ goldInDrawnChests = {
 print("draw cheast:", drawChestTotal)
 print("Gold in each chest:", goldInDrawnChests)
 print("Your gold:", sum(goldInDrawnChests.values()))
-"""
+
+
 gameLenght = 5
 goldSumary = 0
-
 
 while (gameLenght > 0):
 
@@ -66,3 +66,68 @@ while (gameLenght > 0):
         continue
                
     print("Your gold:", goldSumary)   
+"""
+from enum import Enum
+
+gameLength = 5
+goldSumary = 0
+
+Event = Enum('Event',['Chest', 'Empty'])
+
+eventDictionary = {
+    Event.Chest: 0.6,
+    Event.Empty: 0.4
+                  }
+eventList = tuple(eventDictionary.keys())
+eventProbability = tuple(eventDictionary.values())
+
+ChestType = Enum('ChestType', {
+    'Rare': 'Rzadka',
+    'Epic': 'Epicka',
+    'Mystical': 'Mistyczna',
+    'legendary': 'legendarna'
+                         }
+                )
+
+chestTypeDictionary = {
+    ChestType.Rare: 0.75,
+    ChestType.Epic: 0.2,
+    ChestType.Mystical: 0.04,
+    ChestType.legendary: 0.01
+                      }
+
+chestTypeList = tuple(chestTypeDictionary.keys())
+chestTypeProbability = tuple(chestTypeDictionary.values())
+
+rewardForChests = {
+    chestTypeList[reward]: (reward + 1) * (reward + 1) * 1000
+    for reward in range(len(chestTypeList))
+                 }
+
+print("Welcome in game!")
+print("You have 5 steps to make, Lets find out how much gold u can collect.")
+
+while (gameLength > 0):
+
+    gameAnswer = input("Do you want to move forward?: ")
+
+    if (gameAnswer == "yes"):
+        drawnEvent = random.choices(eventList,eventProbability)[0]
+
+        if (drawnEvent == Event.Chest):
+            print("You've drawn a Chest")
+            drawnChest = random.choices(chestTypeList,chestTypeProbability)[0]
+            print("You drawn", drawnChest.value, "chest")
+            gamerReward = rewardForChests[drawnChest]
+            goldSumary = goldSumary + gamerReward
+            print(gamerReward)
+            gameLength -= 1
+
+        elif(drawnEvent == Event.Empty):
+            print("You've drawn nothing!")
+            gameLength -= 1
+    
+    else:
+        print("You can only answer 'yes'")
+        continue
+print("You have acquired: ",goldSumary, "Gold")
