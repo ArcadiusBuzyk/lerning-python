@@ -69,6 +69,10 @@ while (gameLenght > 0):
 """
 from enum import Enum
 
+def findApproximateValue(value):
+    lowestValue = value - 0.1 * value
+    highestValue = value + 0.3 * value
+    return random.randint(lowestValue, highestValue)
 gameLength = 5
 goldSumary = 0
 
@@ -118,7 +122,7 @@ while (gameLength > 0):
             print("You've drawn a Chest")
             drawnChest = random.choices(chestTypeList,chestTypeProbability)[0]
             print("You drawn", drawnChest.value, "chest")
-            gamerReward = rewardForChests[drawnChest]
+            gamerReward = findApproximateValue(rewardForChests[drawnChest])
             goldSumary = goldSumary + gamerReward
             print(gamerReward)
             gameLength -= 1
