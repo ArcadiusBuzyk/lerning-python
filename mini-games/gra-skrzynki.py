@@ -38,11 +38,11 @@ goldSumary = 0
 
 while (gameLenght > 0):
 
-    gameAnswer = int(input("Do you want to move forward? 1 - yes 2 - no : "))
+    gameAnswer = (input("Do you want to move forward?: "))
     chestSpawn = 60
     chestType = ['rare', 'very rare', 'epic', 'legendary']
     
-    if (gameAnswer == 1 ):
+    if (gameAnswer == "yes" ):
         chanceOfChestSpawn = random.uniform(0, 100)
        
         if (chestSpawn < chanceOfChestSpawn):
@@ -61,5 +61,8 @@ while (gameLenght > 0):
         elif (chestSpawn > chanceOfChestSpawn):
             print("There isn't an chest!")
             gameLenght -= 1
+    else: 
+        print("You can only answer 'yes'")
+        continue
                
     print("Your gold:", goldSumary)   
