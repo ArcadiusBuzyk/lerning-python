@@ -1,5 +1,2 @@
-with open("test.txt", "w") as file:
-    file.write("sample")
-
-    a = 5
-    file.write("sample")
+with open("oceany.txt", "a" , encoding="UTF-8") as file:
+    file.write("\nSpokojny")
