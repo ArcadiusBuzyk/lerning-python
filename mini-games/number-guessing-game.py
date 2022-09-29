@@ -11,10 +11,10 @@ while True:
     elif difficultylevel == "hard":
         attemptLimit = 6
 
-    secretNumber = random.randint(0,100)
+    secretNumber = random.randint(0, 100)
     attemptNumber = 0
 
-    print("You choose",  difficultylevel,  "level,",  "now i m gonna think about number between 0 and 100")
+    print("You choose", difficultylevel, "level,", "now i m gonna think about number between 0 and 100")
 
     while attemptNumber < attemptLimit:
         number = int(input("Guess number i m thinking about? :"))
