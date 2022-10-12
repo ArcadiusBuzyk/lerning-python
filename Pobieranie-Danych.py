@@ -1,4 +1,3 @@
-from matplotlib.backend_bases import key_press_handler
 import requests
 import json
 
@@ -24,7 +23,7 @@ def get_keys_with_top_values(my_dict):
     ]
 
 
-def user_with_top_completed_tasks(completedTaskFrequencyByUser):
+def get_users_with_top_completed_tasks(completedTaskFrequencyByUser):
 
     maxAmountOfCompletedTask = max(completedTaskFrequencyByUser.values())
     userIdWithMaxCompletedAmountOfTasks = []
@@ -41,5 +40,30 @@ except requests.exceptions.JSONDecodeError:
     print("Niepoprawny format")
 else:
     completedTaskFrequencyByUser = count_task_frequency(tasks)
-    print(completedTaskFrequencyByUser)
-    print(user_with_top_completed_tasks(completedTaskFrequencyByUser))
+    userWithTopCompletedTasks = get_users_with_top_completed_tasks(completedTaskFrequencyByUser)
+    print(userWithTopCompletedTasks)
+
+
+# sposob 1
+r = requests.get("https://jsonplaceholder.typicode.com/users")
+users = r.json()
+
+
+def give_cookie_to_top_users(userWithTopCompletedTasks):
+    userNameWithCookie = []
+    for user in users:
+        if (user["id"] in userWithTopCompletedTasks):
+            userNameWithCookie.append(user["name"])
+    return userNameWithCookie
+
+
+usersWithCookie = give_cookie_to_top_users(userWithTopCompletedTasks)
+print("Wreczam ciasteczko osobom o imieniu :", usersWithCookie)
+
+# sposob 2
+for userId in userWithTopCompletedTasks:
+    r = requests.get("https://jsonplaceholder.typicode.com/users/" + str(userId))
+    user = r.json()
+    print("Wreczam ciasteczko osobie o imieniu: ", user["name"])
+
+# sposob 3
