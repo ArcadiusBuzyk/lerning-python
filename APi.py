@@ -1,8 +1,19 @@
 import requests
 import json
+import webbrowser
+from datetime import datetime, timedelta
+
+timeBefore = timedelta(days=7)
+
+searchDate = datetime.today() - timeBefore
 
 params = {
-    "site": "stackoverflow"
+    "site": "stackoverflow",
+    "sort": "votes",
+    "order": "desc",
+    "fromdate": int(searchDate.timestamp()),
+    "tagged": "python",
+    "min": 5
 }
 
 r = requests.get("https://api.stackexchange.com/2.2/questions/", params)
@@ -12,4 +23,5 @@ try:
 except json.decoder.JSONDecodeError:
     print("Niepoprawny format")
 else:
-    print(questions)
+    for question in questions["items"]:
+        webbrowser.open_new_tab(question["link"])
