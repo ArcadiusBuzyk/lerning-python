@@ -25,7 +25,7 @@ def get_favourite_cats(userId):
 def get_random_cat():
     r = requests.get("https://api.thecatapi.com/v1/images/search", headers=credentials.headers)
 
-    return get_json_content_from_response(r)
+    return get_json_content_from_response(r)[0]
 
 
 def add_favourite_cat(catId, userId):
@@ -39,21 +39,42 @@ def add_favourite_cat(catId, userId):
     return get_json_content_from_response(r)
 
 
+def remove_favourite_cat(favouriteCatId):
+    r = requests.delete("https://api.thecatapi.com/v1/favourites/" + favouriteCatId, headers=credentials.headers)
+
+    return get_json_content_from_response(r)
+
+
 userId = "agh2m"
 name = "Arkadiusz"
 
 favouriteCats = get_favourite_cats(userId)
-print("Twoje ulubiona koty to: ", favouriteCats)
 
 
-randomCat = get_random_cat()
-print("Wylosowano kota: ", randomCat[0]["url"])
+while True:
 
-webbrowser.open_new_tab(randomCat[0]["url"])
+    randomCat = get_random_cat()
+    print("Wylosowano kota: ", randomCat["url"])
+    webbrowser.open_new_tab(randomCat["url"])
+    addToFavorite = input("Czy chcesz dodoć do ulubionych? T/N ")
 
-addToFavorite = input("Czy chcesz dodoć do ulubionych? T/N ")
+    if (addToFavorite.upper() == "T"):
 
-if (addToFavorite.upper() == "T"):
-    print(add_favourite_cat(randomCat[0]["id"], userId))
-else:
-    print("No ok")
+        resultFromAddingFavouriteCat = add_favourite_cat(randomCat["id"], userId)
+        newlyAddedCatInfo = {resultFromAddingFavouriteCat["id"]: randomCat["url"]}
+
+    else:
+        print("No ok")
+        break
+
+    favouriteCatsById = {
+        favouriteCat["id"]: favouriteCat["image"]["url"]
+        for favouriteCat in favouriteCats
+    }
+    favouriteCatsById.update(newlyAddedCatInfo)
+
+    print(favouriteCatsById)
+
+print("Twoje ulubiona koty to: ", favouriteCats("id")("url"))
+favouriteCatId = input("Czy chcesz usunąć kota? ")
+print(remove_favourite_cat(favouriteCatId))
