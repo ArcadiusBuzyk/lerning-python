@@ -56,25 +56,24 @@ while True:
     randomCat = get_random_cat()
     print("Wylosowano kota: ", randomCat["url"])
     webbrowser.open_new_tab(randomCat["url"])
-    addToFavorite = input("Czy chcesz dodoć do ulubionych? T/N ")
+    addToFavorite = input("Czy chcesz dodać do ulubionych? T/N ")
 
     if (addToFavorite.upper() == "T"):
 
         resultFromAddingFavouriteCat = add_favourite_cat(randomCat["id"], userId)
         newlyAddedCatInfo = {resultFromAddingFavouriteCat["id"]: randomCat["url"]}
 
+        favouriteCatsById = {
+            favouriteCat["id"]: favouriteCat["image"]["url"]
+            for favouriteCat in favouriteCats
+        }
+        favouriteCatsById.update(newlyAddedCatInfo)
+
     else:
         print("No ok")
         break
 
-    favouriteCatsById = {
-        favouriteCat["id"]: favouriteCat["image"]["url"]
-        for favouriteCat in favouriteCats
-    }
-    favouriteCatsById.update(newlyAddedCatInfo)
 
-    print(favouriteCatsById)
-
-print("Twoje ulubiona koty to: ", favouriteCats("id")("url"))
+print("Twoje ulubiona koty to: ", favouriteCatsById("id")("url"))
 favouriteCatId = input("Czy chcesz usunąć kota? ")
 print(remove_favourite_cat(favouriteCatId))
