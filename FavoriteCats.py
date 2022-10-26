@@ -73,7 +73,8 @@ while True:
         print("No ok")
         break
 
+    print("Twoje ulubiona koty to: ", favouriteCatsById["id"])
 
-print("Twoje ulubiona koty to: ", favouriteCatsById("id")("url"))
+print("Lista ulubionych kotów :", favouriteCats["id"]["url"])
 favouriteCatId = input("Czy chcesz usunąć kota? ")
 print(remove_favourite_cat(favouriteCatId))
