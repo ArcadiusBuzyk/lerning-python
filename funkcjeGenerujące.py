@@ -1,10 +1,15 @@
-evenNumberGenerator = (element for element in range(400)if (element % 2 == 0))
+def number_multiplied_by_itself_generator():
+    number = 0
+    while True:
+        number += 1
+        yield number * number
 
 
-def generate_even_numbers():
-    for element in range(400):
-        if (element % 2) == 0:
-            yield element
+numberGenerator = number_multiplied_by_itself_generator()
+generatedNumbers = []
 
+for k in range(20):
+    next(numberGenerator)
+generatedNumbers.append(next(numberGenerator))
 
-a = generate_even_numbers()
+print(generatedNumbers)
