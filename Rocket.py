@@ -8,6 +8,8 @@ class Rocket:
         self.speed = speed
 
     def moveUp(self):
+        """rakieta porusza się do góry o (altitude) z szybkością speed
+        """
         self.altitude += self.speed
 
 
@@ -18,5 +20,5 @@ for _ in range(10):
     rockets[rocketIndexToMove].moveUp()
 
 for rocket in rockets:
-    print("Wysokość na jaka poleciała rakieta: ",  rocket.altitude,
-          "wykonując: ", int(rocket.altitude/rocket.speed), "ruchów, prędkość rakiety: ", rocket.speed)
+    print("Wysokość na jaka poleciała rakieta: ", rocket.altitude,
+          "wykonując: ", int(rocket.altitude / rocket.speed), "ruchów, prędkość rakiety: ", rocket.speed)
