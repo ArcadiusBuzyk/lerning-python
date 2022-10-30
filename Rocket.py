@@ -3,7 +3,7 @@ from random import randint
 
 class Rocket:
 
-    def __init__(self, speed):
+    def __init__(self, speed=randint(1, 5)):
         self.altitude = 0
         self.speed = speed
 
@@ -12,13 +12,31 @@ class Rocket:
         """
         self.altitude += self.speed
 
+    def __str__(self):
+        return "Wysokość jaką osiągnęła rakieta: " + str(self.altitude)
 
-rockets = [Rocket(randint(1, 4)) for _ in range(5)]
 
-for _ in range(10):
-    rocketIndexToMove = randint(0, 4)
-    rockets[rocketIndexToMove].moveUp()
+class RocketBoard:
+    def __init__(self, amountOfRockets=5):
+        self.rockets = [Rocket(randint(1, 4)) for _ in range(amountOfRockets)]
 
-for rocket in rockets:
-    print("Wysokość na jaka poleciała rakieta: ", rocket.altitude,
-          "wykonując: ", int(rocket.altitude / rocket.speed), "ruchów, prędkość rakiety: ", rocket.speed)
+        for _ in range(10):
+            rocketIndexToMove = randint(0, len(self.rockets) - 1)
+            self.rockets[rocketIndexToMove].moveUp()
+
+        rocketList = []
+
+        for rocket in self.rockets:
+            print("Wysokość na jaka poleciała rakieta: ", rocket.altitude,
+                  "wykonując: ", int(rocket.altitude / rocket.speed),
+                  "ruchów, prędkość rakiety: ", rocket.speed)
+
+            rocketList.append(rocket.altitude)
+
+        print("Najwyższa wysokość: ", max(rocketList))
+
+    def __getitem__(self, key):
+        return self.rockets[key]
+
+    def __setitem__(self, key, value):
+        self.rockets[key].altitude = value
