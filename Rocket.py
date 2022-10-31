@@ -5,7 +5,10 @@ class Rocket:
 
     def __init__(self, speed=randint(1, 5)):
         self.altitude = 0
+
         self.speed = speed
+
+        self.x = 0
 
     def moveUp(self):
         """rakieta porusza się do góry o (altitude) z szybkością speed
@@ -14,6 +17,9 @@ class Rocket:
 
     def __str__(self):
         return "Wysokość jaką osiągnęła rakieta: " + str(self.altitude)
+
+    def get_distance(self, rocket):
+        return abs(rocket.altitude - self.altitude)
 
 
 class RocketBoard:
