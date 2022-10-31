@@ -1,6 +1,7 @@
 from Rocket import RocketBoard
 
-board = RocketBoard(2)
+board = RocketBoard(3)
 
-board[0] = 30
 print(board[0])
+
+print(board[0].get_distance(board[1]))
