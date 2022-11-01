@@ -1,4 +1,5 @@
 from random import randint
+from math import sqrt
 
 
 class Rocket:
@@ -19,7 +20,9 @@ class Rocket:
         return "Wysokość jaką osiągnęła rakieta: " + str(self.altitude)
 
     def get_distance(self, rocket):
-        return abs(rocket.altitude - self.altitude)
+        ab = (rocket.altitude - self.altitude) ** 2
+        bc = (rocket.x - self.x) ** 2
+        return sqrt(ab + bc)
 
 
 class RocketBoard:
