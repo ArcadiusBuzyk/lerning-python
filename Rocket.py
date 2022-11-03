@@ -19,11 +19,6 @@ class Rocket:
     def __str__(self):
         return "Wysokość jaką osiągnęła rakieta: " + str(self.altitude)
 
-    def get_distance(self, rocket):
-        ab = (rocket.altitude - self.altitude) ** 2
-        bc = (rocket.x - self.x) ** 2
-        return sqrt(ab + bc)
-
 
 class RocketBoard:
     def __init__(self, amountOfRockets=5):
@@ -49,3 +44,9 @@ class RocketBoard:
 
     def __setitem__(self, key, value):
         self.rockets[key].altitude = value
+
+    @staticmethod
+    def get_distance(rocket1, rocket2):
+        ab = (rocket1.altitude - rocket2.altitude) ** 2
+        bc = (rocket1.x - rocket2.x) ** 2
+        return sqrt(ab + bc)
