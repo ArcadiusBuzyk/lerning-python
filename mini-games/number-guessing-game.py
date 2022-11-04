@@ -3,18 +3,18 @@ import random
 while True:
     print("Chose difficulty: level 'easy' 'normal' 'hard'")
 
-    difficultylevel = str(input("Difficulty lever: "))
-    if difficultylevel == "easy":
+    difficultyLevel = str(input("Difficulty lever: "))
+    if difficultyLevel == "easy":
         attemptLimit = 15
-    elif difficultylevel == "normal":
+    elif difficultyLevel == "normal":
         attemptLimit = 10
-    elif difficultylevel == "hard":
+    elif difficultyLevel == "hard":
         attemptLimit = 6
 
     secretNumber = random.randint(0, 100)
     attemptNumber = 0
 
-    print("You choose", difficultylevel, "level,", "now i m gonna think about number between 0 and 100")
+    print("You choose", difficultyLevel, "level,", "now i m gonna think about number between 0 and 100")
 
     while attemptNumber < attemptLimit:
         number = int(input("Guess number i m thinking about? :"))
