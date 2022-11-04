@@ -82,8 +82,8 @@ goldSumary = 0
 Event = Enum('Event', ['Chest', 'Empty'])
 
 eventDictionary = {
-    Event.Chest: 0.6,
-    Event.Empty: 0.4
+    Event.Chest: 0.8,
+    Event.Empty: 0.2
 }
 eventList = tuple(eventDictionary.keys())
 eventProbability = tuple(eventDictionary.values())
