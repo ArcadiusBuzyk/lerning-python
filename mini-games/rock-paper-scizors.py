@@ -3,30 +3,54 @@ import random
 player = 0
 opponent = 0
 
-a = ['paper', 'rock', 'scisors']
-
-"paper" > "rock"
-"rock" > "scisors"
-"scisors" > "paper"
+possibleActions = ["paper", "rock", "scissors"]
 
 while (player < 3) and (opponent < 3):
 
-    playerChoice = input("What u want to chose?: 'paper', 'rock', 'scisors'\n")
-    opponentChoice = random.choice(a)
+    playerAction = input("What u want to chose?: 'paper', 'rock', 'scissors'\n")
+    opponentAction = random.choice(possibleActions)
 
-    if (playerChoice == opponentChoice):
-        print("opponent:", opponentChoice)
-        print("draw")
+    if (playerAction == "rock"):
 
-    elif (playerChoice < opponentChoice):
-        print("opponent:", opponentChoice)
-        player += 1
-        print("You won point!", "You:", player, "Computer:", opponent)
+        if (opponentAction == "paper"):
+            opponent += 1
+            print("opponent:", opponentAction)
+            print("You lost !", "You:", player, "Computer:", opponent)
+        elif (opponentAction == "scissors"):
+            player += 1
+            print("opponent:", opponentAction)
+            print("You won point!", "You:", player, "Computer:", opponent)
+        else:
+            print("opponent:", opponentAction)
+            print("draw")
 
-    elif (opponentChoice < playerChoice):
-        print("opponent:", opponentChoice)
-        opponent += 1
-        print("You lost !", "You:", player, "Computer:", opponent)
+    elif (playerAction == "paper"):
+
+        if (opponentAction == "scissors"):
+            opponent += 1
+            print("opponent:", opponentAction)
+            print("You lost !", "You:", player, "Computer:", opponent)
+        elif (opponentAction == "rock"):
+            player += 1
+            print("opponent:", opponentAction)
+            print("You won point!", "You:", player, "Computer:", opponent)
+        else:
+            print("opponent:", opponentAction)
+            print("draw")
+
+    elif (playerAction == "scissors"):
+
+        if (opponentAction == "rock"):
+            opponent += 1
+            print("opponent:", opponentAction)
+            print("You lost !", "You:", player, "Computer:", opponent)
+        elif (opponentAction == "paper"):
+            player += 1
+            print("opponent:", opponentAction)
+            print("You won point!", "You:", player, "Computer:", opponent)
+        else:
+            print("opponent:", opponentAction)
+            print("draw")
 
 if player == 3:
     print("You won game!")
