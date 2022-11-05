@@ -4,12 +4,11 @@ from math import sqrt
 
 class Rocket:
 
-    def __init__(self, speed=randint(1, 5)):
-        self.altitude = 0
+    def __init__(self, speed=randint(1, 5), altitude=0, x=0):
 
+        self.altitude = altitude
         self.speed = speed
-
-        self.x = 0
+        self.x = x
 
     def moveUp(self):
         """rakieta porusza się do góry o (altitude) z szybkością speed
@@ -46,7 +45,10 @@ class RocketBoard:
         self.rockets[key].altitude = value
 
     @staticmethod
-    def get_distance(rocket1, rocket2):
+    def get_distance(rocket1: Rocket, rocket2: Rocket) -> float:
         ab = (rocket1.altitude - rocket2.altitude) ** 2
         bc = (rocket1.x - rocket2.x) ** 2
         return sqrt(ab + bc)
+
+    def __len__(self):
+        return len(self.rockets)
