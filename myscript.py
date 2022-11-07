@@ -1,11 +1,6 @@
 from user import User
 
-a = User("Arkadiusz")
-b = User("Klaudia")
-c = User("Weronika")
+users = [User() for _ in range(8)]
 
-
-print(User.name)
-print(a.name)
-print(b.name)
-print(c.name)
+for user in users:
+    print(user.id)
