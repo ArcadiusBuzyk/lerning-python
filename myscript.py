@@ -1,6 +1,12 @@
-from user import User
+from bankaccount import BankAccount
 
-users = [User() for _ in range(8)]
+konto = BankAccount(500)
 
-for user in users:
-    print(user.id)
+amountToWithdraw = 600
+
+result = konto.try_withdraw(amountToWithdraw)
+
+if (result.isSuccess):
+    print(result.message, result.value)
+elif (result.isSuccess is False):
+    print(result.message, konto.balance)
