@@ -1,12 +1,6 @@
-from bankaccount import BankAccount
+from bankaccount import BankAccount, MinimumBalanceAccount
 
-konto = BankAccount(500)
 
-amountToWithdraw = 600
-
-result = konto.try_withdraw(amountToWithdraw)
-
-if (result.isSuccess):
-    print(result.message, result.value)
-elif (result.isSuccess is False):
-    print(result.message, konto.balance)
+accountMin = MinimumBalanceAccount(1500, 1000)
+result = accountMin.try_withdraw(300)
+print(result.message, result.value)
